@@ -158,7 +158,7 @@ for ii = 0,2 do begin
   print, ""
   ;oplot, lambda/nanometer, B_array, color=color
   oplot, lambda/nanometer, nphoton, color=color
-  xyouts, max(lambda, indexofmax), max(nphoton), "'Star'+([ii]+1)"
+  xyouts, max(lambda, indexofmax), max(nphoton), "'Star'+([ii]+1)"  ; not sure how to do this
 
 endfor
 
