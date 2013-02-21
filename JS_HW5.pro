@@ -152,13 +152,17 @@ for ii = 0,2 do begin
     type='maroon'     ; Low temps would emit in infrared
     endif
   
+  ; PLOTS
+  ;oplot, lambda/nanometer, B_array, color=color
+  oplot, lambda/nanometer, nphoton, color=color
+  xyouts, max(lambda, indexofmax), max(nphoton), "'Star'+([ii]+1)"  ; not sure how to do this
+
+  ; PRINTS
   ;print, "The peak wavelength for a star with temperature ", temp_array[ii]," K is ", peakLambda/nanometer, " nm", " 
   print, "After ", s, " seconds of exposure, HST gathered ", photons_gathered, " photons from the ", type, " star, which is ", d_array[ii]/parsec, " parsecs away."
   print, "The Luminosity of this star is ", total(L_array), " Watts, which is ", total(L_array)/LSun, " times that of the Sun." 
   print, ""
-  ;oplot, lambda/nanometer, B_array, color=color
-  oplot, lambda/nanometer, nphoton, color=color
-  xyouts, max(lambda, indexofmax), max(nphoton), "'Star'+([ii]+1)"  ; not sure how to do this
+
 
 endfor
 
