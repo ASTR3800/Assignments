@@ -19,7 +19,7 @@ LSun = 3.846d26       ; luminosity of Sun [W]
 ;T = 3910.         ; temp of Aldebaran
 ;r = 6e8*44        ; radius of Aldebaran
 ;r = 1.7*rSun      ; radius of Sirius A is 1.7*rSun
-d = 10*parsec     ; 10 parsecs
+d = 1000*parsec     ; 10 parsecs
 ;d = 8.6*ly        ; distance to Sirius A
 A = !pi*1.2^2     ; Area of a telescope in m^2. HST has a radius of 1.2 m
 ;A = !pi*.00125    ; Area of eye in m^2. Eye has a radius of 1.25 cm
@@ -102,11 +102,12 @@ print, "Total number of photons gathered by HST over ", s, " seconds is", photon
 print, "The total Luminosity of this star is ", total(L), " which is ", total(L)/LSun, " times that of the Sun."
 print, ""
 print, ""
+
 ; This for loop takes the temp and distance arrays and creates plots using randomly generated
 ; temperatures and distances. This could simply be converted to arrays that contain actual
 ; data on stars. I think that this would have to be done in the form Sirius.temp or Sirius.dist
-temp_array = [T, T+T*randomu(seed), T-T*randomu(seed)]
-d_array = [d, d+d*randomu(seed), d-d*randomu(seed)]
+temp_array = [T, T+T*randomu(seed), T+T*randomu(seed)-T]
+d_array = [d, d+d*randomu(seed), d*randomu(seed)]
 
 for ii = 0,2 do begin
   B_array = 2*h*c^2 / ( lambda^5 * ( exp(h*c/(lambda*k*temp_array[ii]) ) - 1. ) )
